@@ -18,9 +18,13 @@ public class Event {
 
     public String GetName() {return m_name;}
     public int GetTickets() {return m_tickets;}
+    public void SetTickets(int t) {m_tickets = t;}
 
-    //will probably need an override method for comparison (compare event name vs other event name not obj address)
-
+    //an override method for comparison (compare event name vs other event name not obj address)
+    public boolean equals(Event event)
+    {
+        return (this.GetName().equals(event.GetName()));
+    }
 
     @Override
     public String toString() {

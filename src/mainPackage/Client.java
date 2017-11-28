@@ -1,6 +1,6 @@
 package mainPackage;
 import static java.lang.System.*;
-import javafx.util.Pair;
+//import javafx.util.Pair;
 
 public class Client {
     private String m_name;
@@ -34,6 +34,20 @@ public class Client {
     //add ticket method to add bought tickets to client
     public void AddTicket(Event event, int tickets)
     {
+        for (int i =0; i < m_chosenEvents.length; i++)
+        {
+            if (m_chosenEvents[i].GetKey().equals(event))
+            {
+                //add new tickets to the existing event
+                //m_chosenEvents[i].getValue() +=tickets;
+                //mutable pair instead maybe?
+            }
+            else
+            {
+                //add both the new event and the tickets
+                //but where to add it??? --> need a method to find the first null value
+            }
+        }
         //check if event exists in the array to start with
         //if it exists add tickets to it, if it doesn't add the event and tickets to array
     }
@@ -45,7 +59,7 @@ public class Client {
         String toReturn = m_name + " " + m_surname;
         for (Pair<Event,Integer> p: m_chosenEvents)
         {
-            toReturn += "\n" + p.getKey().GetName() + " " + p.getValue();
+            toReturn += "\n" + p.GetKey().GetName() + " " + p.GetValue();
         }
         return toReturn;
     }
