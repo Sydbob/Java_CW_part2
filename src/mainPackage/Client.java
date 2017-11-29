@@ -15,6 +15,14 @@ public class Client {
         m_chosenEvents = chosenEvents;
     }
 
+    public Client(String s)
+    {
+        String [] arr = s.split("\\W+");
+        m_name = arr[0];
+        m_surname = arr[1];
+        m_chosenEvents = new Pair[MAX_EVENTS];
+    }
+
     public Client()
     {
         m_name="";
@@ -30,37 +38,93 @@ public class Client {
     public void SetChosenEvents(Pair<Event,Integer>[] events) {m_chosenEvents = events;}
 
     //add method to check if there space in the array i.e. if any of the elements are null
+    public boolean HasSpace()
+    {
+        for (int i=0; i < m_chosenEvents.length; i++)
+        {
+            if (m_chosenEvents[i] == null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //add a new pair to the fixed size array
+    public void AddPair(Pair[] arr, Pair<Event,Integer> pair)
+    {
+        for (int i = 0; i < arr.length; i++)
+        {
+            //find next available spot
+            if (arr[i] == null)
+            {
+                //add the pair here
+                arr[i] = pair;
+                break;
+            }
+        }
+    }
+
+    public int EventID(Event event)
+    {
+        int id = -1;
+        for (int i = 0; i < m_chosenEvents.length; i++)
+        {
+            if (m_chosenEvents[i] != null && m_chosenEvents[i].GetKey().equals(event))
+            {
+                //if event is found set id to it's position in the array and exit loop
+                id = i;
+                break;
+            }
+            else
+            {
+                //otherwise set it to -1 and keep looking
+                id = -1;
+            }
+        }
+        return id;
+    }
+
 
     //add ticket method to add bought tickets to client
     public void AddTicket(Event event, int tickets)
     {
-        for (int i =0; i < m_chosenEvents.length; i++)
-        {
-            if (m_chosenEvents[i].GetKey().equals(event))
+        //check if event exists, set id to -1 if it doesnt
+        int id = EventID(event);
+            //if event exists i.e id is not -1
+            if (id != -1)
             {
-                //add new tickets to the existing event
-                //m_chosenEvents[i].getValue() +=tickets;
-                //mutable pair instead maybe?
+                //add new tickets to existing ones
+                int temp = m_chosenEvents[id].GetValue() + tickets;
+                //update the value in the pair
+                m_chosenEvents[id].SetValue(temp);
             }
             else
             {
-                //add both the new event and the tickets
-                //but where to add it??? --> need a method to find the first null value
+                //create a new pair and add it
+                Pair<Event,Integer> pair = new Pair<>();
+                pair.SetKey(event);
+                pair.SetValue(tickets);
+                AddPair(m_chosenEvents, pair);
             }
-        }
-        //check if event exists in the array to start with
-        //if it exists add tickets to it, if it doesn't add the event and tickets to array
+
     }
 
     @Override
     //overridden method to print out client name, surname followed by event name and tickets bought for the event
     public String toString()
     {
-        String toReturn = m_name + " " + m_surname;
+        String events ="";
+        String client =  "\n*************\nClient:" + "\n\t" + m_name + " " + m_surname + "\nTickets bought:";
+        String toReturn;
         for (Pair<Event,Integer> p: m_chosenEvents)
         {
-            toReturn += "\n" + p.GetKey().GetName() + " " + p.GetValue();
+            if (p != null)
+            {
+                events += "\n\t" + p.GetKey().GetName() + " | " + p.GetValue();
+            }
         }
+        toReturn = client + events;
         return toReturn;
     }
 

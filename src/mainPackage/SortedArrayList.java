@@ -3,6 +3,12 @@ import java.util.ArrayList;
 
 
 public class SortedArrayList<E> extends ArrayList {
+
+    private E element;
+
+    public E GetElement() {return  element;}
+    public void SetElement(E element) {this.element = element;}
+    public void AddEvent(Event e) {}
     //task 1
     //one method that inserts a new element in a sorted list in the right place not using collections.sort
     //scan list and find right place for the element
