@@ -28,6 +28,6 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event name: " + m_name + " " + " Tickets available: " + m_tickets;
+        return "Event name: " + m_name + " " + "| Tickets available: " + m_tickets;
     }
 }

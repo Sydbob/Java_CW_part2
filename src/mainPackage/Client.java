@@ -5,7 +5,7 @@ import static java.lang.System.*;
 public class Client {
     private String m_name;
     private String m_surname;
-    private final int MAX_EVENTS = 3;
+    private static final int MAX_EVENTS = 3;
     private Pair<Event,Integer>[] m_chosenEvents;
 
     public Client(String name, String surname, Pair <Event,Integer>[] chosenEvents)
