@@ -109,25 +109,26 @@ public class Client {
             }
 
     }
-
+    //an override method for comparison (compare client name/surname vs other client name/surname)
+    public boolean equals(Client client)
+    {
+        return (this.GetName().equals(client.GetName()) && this.GetSurname().equals(client.GetSurname()));
+    }
     @Override
     //overridden method to print out client name, surname followed by event name and tickets bought for the event
     public String toString()
     {
         String events ="";
-        String client =  "\n*************\nClient:" + "\n\t" + m_name + " " + m_surname + "\nTickets bought:";
+        String client =  "\nClient:" + " " + m_name + " " + m_surname + "\nEvents:";
         String toReturn;
         for (Pair<Event,Integer> p: m_chosenEvents)
         {
             if (p != null)
-            {
                 events += "\n\t" + p.GetKey().GetName() + " | " + p.GetValue();
-            }
         }
+        if (events.isEmpty())
+            events = "No events to display";
         toReturn = client + events;
         return toReturn;
     }
-
-
-
 }

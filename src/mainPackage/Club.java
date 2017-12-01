@@ -21,7 +21,28 @@ public class Club {
 
     //add client to club
     //add event to club
+    public int ClientID(String details)
+    {
+        Client client = new Client(details);
+        int exists = -1;
+        for (int i = 0; i < m_clients.size(); i ++)
+        {
+            if (client.equals(m_clients.get(i)))
+                exists = i;
+        }
+        return exists;
+    }
 
+    public int EventID(String name)
+    {
+        int exists = -1;
+        for (int i = 0; i < m_events.size(); i++)
+        {
+            if (name.equals(m_events.get(i).GetName()))
+                exists = i;
+        }
+        return exists;
+    }
     //display menus
     public static void Welcome()
     {
@@ -39,7 +60,7 @@ public class Club {
         out.println("'c' - to display about all the clients");
         out.println("'b' - to buy tickets [only available to registered clients] ");
         out.println("'r' - to return a tickets [only available to registered clients] ");
-        out.println("Your choice > ");
+        out.print("Your choice >> ");
     }
 
 }

@@ -5,15 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import static java.lang.System.*;
 
 public class Util {
+
+
 
     public static void ReadFromFile(Club club) throws FileNotFoundException
     {
         Scanner inFile = new Scanner(new FileReader("D:\\Java Projects\\Java_CW_part2\\input.txt"));
         PrintWriter outFile = new PrintWriter("D:\\Java Projects\\Java_CW_part2\\output.txt");
-        int numOfEvents;
-        int numOfClients =0 ;
+        int numOfEvents = 0;
+        int numOfClients =0;
         while(inFile.hasNextLine())
         {
             //read as a line to avoid leftover empty string chars, parse to int
@@ -26,10 +29,8 @@ public class Util {
                 Event event = new Event(eventName, eventTickets);
                 club.AddEvent(event);
             }
-            //done with events now onto clients
-            out.println("Done with events");
-            out.println("Done with events");
-            //clearing the remaining empty string
+            //done with events now onto reading clients
+            //first clearing the remaining empty string character
             String clear = inFile.nextLine();
             numOfClients = Integer.parseInt(inFile.nextLine());
             for (int i = 0; i < numOfClients; i++)
@@ -39,6 +40,8 @@ public class Util {
                 club.AddClient(client);
             }
         }
+        //close the inFile reader once done
+        inFile.close();
     }
 
 }

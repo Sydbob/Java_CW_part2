@@ -26,6 +26,17 @@ public class Event {
         return (this.GetName().equals(event.GetName()));
     }
 
+
+    public boolean HasTickets(Event e)
+    {
+        boolean hasTickets = false;
+        if (e.m_tickets > 0)
+            hasTickets = true;
+        else
+            hasTickets = false;
+        return hasTickets;
+    }
+
     @Override
     public String toString() {
         return "Event name: " + m_name + " " + "| Tickets available: " + m_tickets;
