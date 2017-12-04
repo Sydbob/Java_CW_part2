@@ -84,5 +84,4 @@ public class Util {
         //close the inFile reader once done
         inFile.close();
     }
-
 }

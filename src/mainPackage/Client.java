@@ -37,6 +37,7 @@ public class Client {
     public void SetSurname(String surname) {m_surname = surname;}
     public void SetChosenEvents(Pair<Event,Integer>[] events) {m_chosenEvents = events;}
 
+
     //add method to check if there space in the array i.e. if any of the elements are null
     public boolean HasSpace()
     {
@@ -85,6 +86,24 @@ public class Client {
         return id;
     }
 
+    public boolean ClientHasEvent(String n)
+    {
+        boolean b = false;
+
+        for (int i = 0; i < m_chosenEvents.length; i++)
+        {
+            if (m_chosenEvents[i] != null && m_chosenEvents[i].GetKey().GetName().equals(n))
+            {
+                b = true;
+                break;
+            }
+            else if (m_chosenEvents[i] == null)
+            {
+                b = true;
+            }
+        }
+        return b;
+    }
 
     //add ticket method to add bought tickets to client
     public void AddTicket(Event event, int tickets)

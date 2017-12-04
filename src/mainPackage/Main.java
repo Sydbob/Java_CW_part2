@@ -50,70 +50,77 @@ public class Main
                     String details = in.nextLine();
                     //check if client exists, if yes get id
                     int clientID = club.ClientID(details);
-                    //if client exists and has space available
-                    if (clientID != -1 && club.GetClients().get(clientID).HasSpace())
+                    //if client exists
+                    if (clientID != -1)
                     {
-                        out.print("\nEnter event name: ");
-                        String eName = in.nextLine();
-                        //check if event exists and hs tickets available
-                        int eventID = club.EventID(eName);
-                        if (eventID != -1 && club.GetEvents().get(eventID).GetTickets() > 0)
-                        {
-                            out.print("\nEnter amount of tickets to buy " + "(" + club.GetEvents().get(eventID).GetTickets() + " ticket(s) available): ");
-                            String temp = in.nextLine();
-                            //validate amount entered
-                            int eTickets = Util.ValidateInt(temp, "That's not a valid amount!",1,club.GetEvents().get(eventID).GetTickets());
-                            //add the amount if valid
-                            club.GetClients().get(clientID).AddTicket(club.GetEvents().get(eventID), eTickets);
-                            //update amount of available tickets
-                            int newAmount = club.GetEvents().get(eventID).GetTickets() - eTickets;
-                            club.GetEvents().get(eventID).SetTickets(newAmount);
-                        }
-                        else
-                            out.println("Sorry, event doesn't exist OR has no tickets available. Cancelling transaction.");
-                    }
-                    //if client exists but has reached max events count
-                    else if (clientID != -1)
-                    {
-                        out.println("WARNING: This client has reached maximum allowed amount of events.");
-                        out.println("WARNING: This client can ONLY purchase additional tickets to EXISTING events.");
                         char yesNo = 'y';
-                        while (yesNo != 'n')
+                        //check if client has space, if not put out a warning
+                        if (!club.GetClients().get(clientID).HasSpace())
                         {
-                            out.print("\nWould you like to continue (y/n) >> ");
-                            yesNo = in.nextLine().toLowerCase().charAt(0);
-                            switch (yesNo) {
-                                case 'n':
-                                    out.println("Transaction cancelled.");
-                                    break;
-                                case 'y':
-                                    for (Pair p: club.GetClients().get(clientID).GetChosenEvents())
-                                    out.println(p.GetKey() + "| Tickets already bought: " + p.GetValue());
-                                    out.println("Which event would you like to add tickets to? Enter name >>");
-                                    String eName= in.nextLine();
-                                    int eID = club.EventID(eName);
-                                    //check if event exists and hs tickets available
-                                    int eventID = club.EventID(eName);
-                                    if (eventID != -1 && club.GetEvents().get(eventID).GetTickets() > 0)
-                                    {
-                                        out.print("\nEnter amount of tickets to buy " + "(" + club.GetEvents().get(eventID).GetTickets() + " ticket(s) available): ");
-                                        String temp = in.nextLine();
-                                        //validate amount entered
-                                        int eTickets = Util.ValidateInt(temp, "That's not a valid amount!",1,club.GetEvents().get(eventID).GetTickets());
-                                        //add the amount if valid
-                                        club.GetClients().get(clientID).AddTicket(club.GetEvents().get(eventID), eTickets);
-                                        //update amount of available tickets
-                                        int newAmount = club.GetEvents().get(eventID).GetTickets() - eTickets;
-                                        club.GetEvents().get(eventID).SetTickets(newAmount);
-                                    }
-                                    else
-                                        out.println("Sorry, event doesn't exist OR has no tickets available. Cancelling transaction.");
-                                    break;
-                                default:
-                                    out.println("Not a valid option, enter 'y' or 'n'");
+                            out.println("WARNING: This client has reached maximum allowed amount of events.");
+                            out.println("WARNING: This client can ONLY purchase additional tickets to EXISTING events.");
+                            yesNo = ' ';
+                            while (yesNo != 'n' && yesNo!= 'y')
+                            {
+                                out.print("\nWould you like to continue (y/n) >> ");
+                                yesNo = in.nextLine().toLowerCase().charAt(0);
+                                switch (yesNo)
+                                {
+                                    case 'n':
+                                        out.println("Transaction cancelled.");
+                                        yesNo = 'n';
+                                        break;
+                                    case 'y':
+                                        yesNo = 'y';
+                                        break;
+                                    default:
+                                        out.println("Not a valid option, please enter y/n");
+                                        break;
+                                }
                             }
                         }
+                        while (yesNo != 'n')
+                        {
+                            if (clientID != -1 && !club.GetClients().get(clientID).HasSpace())
+                            {
+                                out.println("This client can only purchase tickets to following events:");
+                                for (Pair p : club.GetClients().get(clientID).GetChosenEvents())
+                                    out.println(p.GetKey());
+                            }
+                            //continue if client has space available
+                            out.print("\nEnter event name: ");
+                            String eName = in.nextLine();
+                            //check if event exists and hs tickets available
+                            int eventID = club.EventID(eName);
+                            while (!club.GetClients().get(clientID).ClientHasEvent(eName))
+                            {
+                                out.println("Client cannot but tickets to new events");
+                                out.println("Enter valid event name");
+                                eName = in.nextLine();
+                                eventID = club.EventID(eName);
+                            }
+                            if (eventID != -1 && club.GetEvents().get(eventID).GetTickets() > 0)
+                            {
+                                out.print("\nEnter amount of tickets to buy " + "(" + club.GetEvents().get(eventID).GetTickets() + " ticket(s) available): ");
+                                String temp = in.nextLine();
+                                //validate amount entered
+                                int eTickets = Util.ValidateInt(temp, "That's not a valid amount!", 1, club.GetEvents().get(eventID).GetTickets());
+                                //add the amount if valid
+                                club.GetClients().get(clientID).AddTicket(club.GetEvents().get(eventID), eTickets);
+                                //update amount of available tickets
+                                int newAmount = club.GetEvents().get(eventID).GetTickets() - eTickets;
+                                club.GetEvents().get(eventID).SetTickets(newAmount);
+                                yesNo = 'n';
+                            }
+                            else
+                            {
+                                out.println("Sorry, event doesn't exist OR has no tickets available. Cancelling transaction.");
+                                yesNo = 'n';
+                            }
+
+                        }
                     }
+                    //if client exists but has reached max events count
                     else
                     {
                         out.println("Sorry, only registered clients can purchase tickets.");
