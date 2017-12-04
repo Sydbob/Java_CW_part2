@@ -9,7 +9,48 @@ import static java.lang.System.*;
 
 public class Util {
 
-
+    public static int ValidateInt (String value, String errorText, int minRange, int maxRange)
+    {
+        Scanner in = new Scanner(System.in);
+        int parsedValue = 0;
+        boolean valid = false;
+        boolean parsed = false;
+        //main loop that will run both int and range test
+        while (!valid)
+        {
+            //loop that will run parse test while it keeps filing
+            while(!parsed)
+            {
+                try
+                {
+                    Integer.parseInt(value);
+                    parsed = true; //exit the loop if it parsed successfully
+                }
+                catch (NumberFormatException e)
+                {
+                    System.out.print(errorText + "(valid amounts is "+ minRange + "-" + maxRange + "): ");
+                    value = in.nextLine();
+                    parsed= false;
+                }
+            }
+            //set a new value to the result of the parse to be able to compare it to a range
+            parsedValue = Integer.parseInt(value);
+            if (parsedValue < minRange || parsedValue > maxRange)
+            {
+                System.out.print(errorText + "(valid amount is "+ minRange + "-" + maxRange + "): ");
+                value = in.nextLine();
+                //back to the start of the main loop if range check failed
+                valid = false;
+                parsed = false;
+            }
+            else
+            {
+                //exit the main loop if successful
+                valid = true;
+            }
+        }
+        return parsedValue;
+    }
 
     public static void ReadFromFile(Club club) throws FileNotFoundException
     {

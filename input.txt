@@ -1,9 +1,9 @@
 6
-Tennis
+T
 8
-Athletics
+A
 4
-Handball
+H
 66
 Equestrian Jumping
 7
@@ -14,5 +14,5 @@ Volleyball
 
 3
 Emma Williams
-Anna Smith
+A S
 John Williams
