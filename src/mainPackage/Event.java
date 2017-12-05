@@ -1,6 +1,6 @@
 package mainPackage;
 
-public class Event {
+public class Event implements Comparable<Event>{
     private String m_name;
     private int m_tickets;
 
@@ -27,14 +27,10 @@ public class Event {
     }
 
 
-    public boolean HasTickets(Event e)
+       public int compareTo(Event e)
     {
-        boolean hasTickets = false;
-        if (e.m_tickets > 0)
-            hasTickets = true;
-        else
-            hasTickets = false;
-        return hasTickets;
+        int nCmp = m_name.compareTo(e.m_name);
+        return nCmp;
     }
 
     @Override

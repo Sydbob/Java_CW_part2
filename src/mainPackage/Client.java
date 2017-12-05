@@ -2,7 +2,7 @@ package mainPackage;
 import static java.lang.System.*;
 //import javafx.util.Pair;
 
-public class Client {
+public class Client implements Comparable<Client> {
     private String m_name;
     private String m_surname;
     private static final int MAX_EVENTS = 3;
@@ -30,7 +30,7 @@ public class Client {
         m_chosenEvents = new Pair[MAX_EVENTS];
     }
 
-    public Pair[] GetChosenEvents() {return m_chosenEvents;}
+    public Pair<Event,Integer>[] GetChosenEvents() {return m_chosenEvents;}
     public String GetName() {return m_name;}
     public String GetSurname() {return m_surname;}
     public void SetName(String name) {m_name = name;}
@@ -49,6 +49,20 @@ public class Client {
             }
         }
         return false;
+    }
+
+    public boolean IsEmpty()
+    {
+        boolean empty = true;
+        for (int i = 0; i < m_chosenEvents.length; i ++)
+        {
+            if (m_chosenEvents[i] != null)
+            {
+                empty = false;
+                break;
+            }
+        }
+        return empty;
     }
 
     //add a new pair to the fixed size array
@@ -86,20 +100,37 @@ public class Client {
         return id;
     }
 
-    public boolean ClientHasEvent(String n)
+    public boolean HasTickets()
     {
         boolean b = false;
-
-        for (int i = 0; i < m_chosenEvents.length; i++)
+        for (Pair p : m_chosenEvents)
         {
-            if (m_chosenEvents[i] != null && m_chosenEvents[i].GetKey().GetName().equals(n))
+            if (p != null)
             {
                 b = true;
                 break;
             }
-            else if (m_chosenEvents[i] == null)
-            {
-                b = true;
+        }
+        return b;
+    }
+
+    public boolean ClientHasEvent(String n)
+    {
+        boolean b = false;
+        if ( IsEmpty() )
+        {
+            b = true;
+        }
+        else
+        {
+
+            for (int i = 0; i < m_chosenEvents.length; i++) {
+                if (m_chosenEvents[i] != null && m_chosenEvents[i].GetKey().GetName().equals(n)) {
+                    b = true;
+                    break;
+                } else {
+                    b = false;
+                }
             }
         }
         return b;
@@ -128,10 +159,39 @@ public class Client {
             }
 
     }
+
+    //method that removes tickets and event if it was fully refunded
+    public void RemoveTicket(Event event, int tickets)
+    {
+        //check if event exists, set id to -1 if it doesn't
+        int id = EventID(event);
+        //if event exists i.e id is not -1
+        if (id != -1)
+        {
+            //remove tickets to refund
+            int temp = m_chosenEvents[id].GetValue() - tickets;
+            //update the value in the pair
+            m_chosenEvents[id].SetValue(temp);
+        }
+        //check for events that were completely refunded
+        if (m_chosenEvents[id].GetValue() <= 0)
+        {
+            //remove the event entry if customer refunded all tickets
+            m_chosenEvents[id] = null;
+        }
+    }
     //an override method for comparison (compare client name/surname vs other client name/surname)
     public boolean equals(Client client)
     {
         return (this.GetName().equals(client.GetName()) && this.GetSurname().equals(client.GetSurname()));
+    }
+
+    public int compareTo(Client c)
+    {
+        int lnCmp = m_surname.compareTo(c.m_surname);
+        if (lnCmp !=0) return lnCmp;
+        int fnCmp = m_name.compareTo(c.m_name);
+        return fnCmp;
     }
     @Override
     //overridden method to print out client name, surname followed by event name and tickets bought for the event

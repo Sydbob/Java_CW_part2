@@ -2,13 +2,33 @@ package mainPackage;
 import java.util.ArrayList;
 
 
-public class SortedArrayList<E> extends ArrayList {
+public class SortedArrayList<E extends Comparable<E>> extends ArrayList<E> {
 
     private E element;
 
     public E GetElement() {return  element;}
     public void SetElement(E element) {this.element = element;}
-    public void AddEvent(Event e) {}
+
+    public void AddE(E element)
+    {
+        this.add(element);
+        if (this.size() != 1)
+        {
+            int i;
+            int j;
+            for (i = 0; i < this.size(); i++) {
+                E value = this.get(i);
+                for (j = i; j > 0; j--) {
+                    if (this.get(j - 1).compareTo(value) < 0) {
+                        break;
+                    } else {
+                        this.set(j, this.get(j - 1));
+                    }
+                }
+                this.set(j, value);
+            }
+        }
+    }
     //task 1
     //one method that inserts a new element in a sorted list in the right place not using collections.sort
     //scan list and find right place for the element
