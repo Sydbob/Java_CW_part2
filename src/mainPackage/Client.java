@@ -2,6 +2,9 @@ package mainPackage;
 import static java.lang.System.*;
 //import javafx.util.Pair;
 
+/**
+ * Class for club clients
+ */
 public class Client implements Comparable<Client> {
     private String m_name;
     private String m_surname;
@@ -15,6 +18,10 @@ public class Client implements Comparable<Client> {
         m_chosenEvents = chosenEvents;
     }
 
+    /**
+     * Constructor
+     * @param s 'name surname' format string
+     */
     public Client(String s)
     {
         String [] arr = s.split("\\W+");
@@ -51,6 +58,10 @@ public class Client implements Comparable<Client> {
         return false;
     }
 
+    /**
+     * method that checks if m_chosen events is empty
+     * @return true if empty(i.e. all elements are null), false if not empty
+     */
     public boolean IsEmpty()
     {
         boolean empty = true;
@@ -65,6 +76,11 @@ public class Client implements Comparable<Client> {
         return empty;
     }
 
+    /**
+     * Method to add a pair to fixed size array
+     * @param arr array of pair to add element to
+     * @param pair a pair to add to array
+     */
     //add a new pair to the fixed size array
     public void AddPair(Pair[] arr, Pair<Event,Integer> pair)
     {

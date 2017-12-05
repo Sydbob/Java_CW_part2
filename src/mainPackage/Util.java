@@ -7,8 +7,19 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import static java.lang.System.*;
 
+/**
+ * Class containing various 'utility' methods
+ */
 public class Util {
 
+    /**
+     * Method to validate an integer
+     * @param value user input (String)
+     * @param errorText error text to display if int is not valid (String)
+     * @param minRange minimum range of the int
+     * @param maxRange maximum range of the int
+     * @return
+     */
     public static int ValidateInt (String value, String errorText, int minRange, int maxRange)
     {
         Scanner in = new Scanner(System.in);
@@ -52,6 +63,11 @@ public class Util {
         return parsedValue;
     }
 
+    /**
+     * method that reads file input in specific format
+     * @param club
+     * @throws FileNotFoundException
+     */
     public static void ReadFromFile(Club club) throws FileNotFoundException
     {
         Scanner inFile = new Scanner(new FileReader("D:\\Java Projects\\Java_CW_part2\\input.txt"));
