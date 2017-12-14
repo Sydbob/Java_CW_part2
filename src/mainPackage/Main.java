@@ -4,7 +4,7 @@ import java.util.*;
 import static java.lang.System.*;
 /*
 Project Author: Irina Kovalova S170716899
-Last updated: 05-Dec-2017
+Last updated: 14-Dec-2017
 Description: Java coursework - part 2 - sports club application
 Created using: IntelliJ IDEA v 2017.2.5, Java 9, Windows 10 operating machine
 GitHub repository: https://github.com/Sydbob/Java_CW_part2/tree/master/src/mainPackage
@@ -81,14 +81,14 @@ public class Main
                         }
                         while (yesNo != 'n')
                         {
-                            //if client has reached max available events
+                            //if client has reached max available events let them know what events they have
                             if (clientID != -1 && !club.GetClients().get(clientID).HasSpace())
                             {
                                 out.println("This client can only purchase tickets to following events:");
                                 for (Pair p : club.GetClients().get(clientID).GetChosenEvents())
                                     out.println(p.GetKey());
                             }
-                            //continue if client has space available
+                            //continue
                             out.print("\nEnter event name: ");
                             String eName = in.nextLine();
                             //check if event exists and hs tickets available
@@ -115,12 +115,13 @@ public class Main
                             }
                             else
                             {
+                                Util.PrintLetter(club.GetClients().get(clientID), eName);
                                 out.println("Sorry, event doesn't exist OR has no tickets available. Cancelling transaction.");
                                 yesNo = 'n';
                             }
                         }
                     }
-                    //if client exists but has reached max events count
+                    //if client doesnt exist
                     else
                     {
                         out.println("Sorry, only registered clients can purchase tickets.");

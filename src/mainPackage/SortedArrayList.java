@@ -1,7 +1,7 @@
 package mainPackage;
 import java.util.ArrayList;
 
-
+//custom class to store elements in a sorted array list
 public class SortedArrayList<E extends Comparable<E>> extends ArrayList<E> {
 
     private E element;
@@ -9,6 +9,7 @@ public class SortedArrayList<E extends Comparable<E>> extends ArrayList<E> {
     public E GetElement() {return  element;}
     public void SetElement(E element) {this.element = element;}
 
+    //add method that finds the right place for each new element based on insertion sorting algorithm
     public void AddE(E element)
     {
         this.add(element);
@@ -29,22 +30,4 @@ public class SortedArrayList<E extends Comparable<E>> extends ArrayList<E> {
             }
         }
     }
-    //task 1
-    //one method that inserts a new element in a sorted list in the right place not using collections.sort
-    //scan list and find right place for the element
-    //header is last slide in 41 in notes part 2
-
-    //task2
-    //2 types of objects: event objects and client objects
-    //suggestions of main characteristics on age 2 of the spec
-    //events and clients are to be stored in a sorted arrayList:
-    //order provided in the spec for events and clients
-    //see sportclub example slide 25 and later for building this program (first set of lecture notes)
-
-    //main method (driver) class
-    //peson class
-    //event class
-    //sorted array list class
-
-
 }

@@ -18,10 +18,7 @@ public class Client implements Comparable<Client> {
         m_chosenEvents = chosenEvents;
     }
 
-    /**
-     * Constructor
-     * @param s 'name surname' format string
-     */
+
     public Client(String s)
     {
         String [] arr = s.split("\\W+");
@@ -45,7 +42,7 @@ public class Client implements Comparable<Client> {
     public void SetChosenEvents(Pair<Event,Integer>[] events) {m_chosenEvents = events;}
 
 
-    //add method to check if there space in the array i.e. if any of the elements are null
+    //method to check if there space in the array i.e. if any of the elements are null
     public boolean HasSpace()
     {
         for (int i=0; i < m_chosenEvents.length; i++)
@@ -58,10 +55,8 @@ public class Client implements Comparable<Client> {
         return false;
     }
 
-    /**
-     * method that checks if m_chosen events is empty
-     * @return true if empty(i.e. all elements are null), false if not empty
-     */
+
+     // method that checks if m_chosenEvents is empty
     public boolean IsEmpty()
     {
         boolean empty = true;
@@ -76,11 +71,7 @@ public class Client implements Comparable<Client> {
         return empty;
     }
 
-    /**
-     * Method to add a pair to fixed size array
-     * @param arr array of pair to add element to
-     * @param pair a pair to add to array
-     */
+
     //add a new pair to the fixed size array
     public void AddPair(Pair[] arr, Pair<Event,Integer> pair)
     {
@@ -96,6 +87,7 @@ public class Client implements Comparable<Client> {
         }
     }
 
+    //method for finding event id in m_chosenEvents
     public int EventID(Event event)
     {
         int id = -1;
@@ -116,6 +108,7 @@ public class Client implements Comparable<Client> {
         return id;
     }
 
+    //method that checks if client bought any tickets
     public boolean HasTickets()
     {
         boolean b = false;
@@ -130,6 +123,7 @@ public class Client implements Comparable<Client> {
         return b;
     }
 
+    //method that checks if client already bought tickets for an event
     public boolean ClientHasEvent(String n)
     {
         boolean b = false;
@@ -152,7 +146,7 @@ public class Client implements Comparable<Client> {
         return b;
     }
 
-    //add ticket method to add bought tickets to client
+    //method to add bought tickets to client
     public void AddTicket(Event event, int tickets)
     {
         //check if event exists, set id to -1 if it doesnt

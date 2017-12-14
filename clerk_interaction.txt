@@ -1,0 +1,447 @@
+During thi session clerk tried (not in order):
+-Display all clients info
+-Display all event info
+-Buy tickets to a non registered client
+-Buy tickets to registered client but not existing event
+-Buy tickets to registered client and existing event but enter wrong amount
+-Buy tickets to registered client and existing event but enter not a number
+-Buy tickets to registered client and existing event with valid amount
+-Buy tickets to client that reached max of 3 events
+-Refund tickets to non-existing client
+-Refund tickets to existing client, but non-existing event
+-Refund tickets to existing client and existing event but one that client didnt buy tickets to
+-Refund tickets to both existing client and event, to one that client bought tickets to but enter wrong amount
+-Refund tickets to both existing client and event, to one that client bought tickets to but enter correct amount
+-Partially refund event tickets
+-Fully refund event tickets
+-Exist the software
+
+#################################
+Welcome to Sports Events Software
+#################################
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> e
+Displaying all registered events:
+Event name: Athletics | Tickets available: 4
+Event name: Equestrian Jumping | Tickets available: 7
+Event name: Football | Tickets available: 2
+Event name: Handball | Tickets available: 66
+Event name: Tennis | Tickets available: 8
+Event name: Volleyball | Tickets available: 41
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> c
+Displaying all registered clients:
+
+Client: Anna Smith
+Events:No events to display
+
+Client: Emma Williams
+Events:No events to display
+
+Client: John Williams
+Events:No events to display
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Anna Smith
+
+Enter event name: Football
+
+Enter amount of tickets to buy (2 ticket(s) available): 2
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> c
+Displaying all registered clients:
+
+Client: Anna Smith
+Events:
+	Football | 2
+
+Client: Emma Williams
+Events:No events to display
+
+Client: John Williams
+Events:No events to display
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> e
+Displaying all registered events:
+Event name: Athletics | Tickets available: 4
+Event name: Equestrian Jumping | Tickets available: 7
+Event name: Football | Tickets available: 0
+Event name: Handball | Tickets available: 66
+Event name: Tennis | Tickets available: 8
+Event name: Volleyball | Tickets available: 41
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] John McCoy
+Sorry, only registered clients can purchase tickets.
+Client 'John McCoy' doesn't exist. Transaction cancelled.
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Anna Smith
+
+Enter event name: Boxing
+Sorry, event doesn't exist OR has no tickets available. Cancelling transaction.
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Anna Smith
+
+Enter event name: Football
+Sorry, event doesn't exist OR has no tickets available. Cancelling transaction.
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Anna Smith
+
+Enter event name: Athletics
+
+Enter amount of tickets to buy (4 ticket(s) available): 67
+That's not a valid amount!(valid amount is 1-4): 2w
+That's not a valid amount!(valid amounts is 1-4): 2
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> c
+Displaying all registered clients:
+
+Client: Anna Smith
+Events:
+	Football | 2
+	Athletics | 2
+
+Client: Emma Williams
+Events:No events to display
+
+Client: John Williams
+Events:No events to display
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> R
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Emma Williams
+Sorry the client is either not a valid client or has no tickets purchased
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> r
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Anna Smith
+Which event would you like to refund tickets to:
+Football 2
+Athletics 2
+Enter event name: Polo
+Event either doesn't exist or client bought no tickets for it. Transaction cancelled.
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> r
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Anna Smith
+Which event would you like to refund tickets to:
+Football 2
+Athletics 2
+Enter event name: Football
+How many tickets would you like to refund?
+45
+That's not a valid amount!(valid amount is 1-2): 4r
+That's not a valid amount!(valid amounts is 1-2): 2
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> c
+Displaying all registered clients:
+
+Client: Anna Smith
+Events:
+	Athletics | 2
+
+Client: Emma Williams
+Events:No events to display
+
+Client: John Williams
+Events:No events to display
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> e
+Displaying all registered events:
+Event name: Athletics | Tickets available: 2
+Event name: Equestrian Jumping | Tickets available: 7
+Event name: Football | Tickets available: 2
+Event name: Handball | Tickets available: 66
+Event name: Tennis | Tickets available: 8
+Event name: Volleyball | Tickets available: 41
+Going back to main menu
+##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Emma Williams
+
+Enter event name: Athletics
+
+Enter amount of tickets to buy (2 ticket(s) available): 2
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Emma Williams
+
+Enter event name: Handball
+
+Enter amount of tickets to buy (66 ticket(s) available): 30
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Emma Williams
+
+Enter event name: Equestrian Jumping
+
+Enter amount of tickets to buy (7 ticket(s) available): 4
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Emma Williams
+WARNING: This client has reached maximum allowed amount of events.
+WARNING: This client can ONLY purchase additional tickets to EXISTING events.
+
+Would you like to continue (y/n) >> n
+Transaction cancelled.
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Emma Williams
+WARNING: This client has reached maximum allowed amount of events.
+WARNING: This client can ONLY purchase additional tickets to EXISTING events.
+
+Would you like to continue (y/n) >> y
+This client can only purchase tickets to following events:
+Event name: Athletics | Tickets available: 0
+Event name: Handball | Tickets available: 36
+Event name: Equestrian Jumping | Tickets available: 3
+
+Enter event name: Football
+Client cannot buy tickets to new events
+Enter valid event name
+Athletics
+Sorry, event doesn't exist OR has no tickets available. Cancelling transaction.
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> b
+
+Enter client details [format: name surname e.g. 'Bob Smith'] Emma Williams
+WARNING: This client has reached maximum allowed amount of events.
+WARNING: This client can ONLY purchase additional tickets to EXISTING events.
+
+Would you like to continue (y/n) >> y
+This client can only purchase tickets to following events:
+Event name: Athletics | Tickets available: 0
+Event name: Handball | Tickets available: 36
+Event name: Equestrian Jumping | Tickets available: 3
+
+Enter event name: Handball
+
+Enter amount of tickets to buy (36 ticket(s) available): 120
+That's not a valid amount!(valid amount is 1-36): 3e4
+That's not a valid amount!(valid amounts is 1-36): 4 5
+That's not a valid amount!(valid amounts is 1-36): 5
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> c
+Displaying all registered clients:
+
+Client: Anna Smith
+Events:
+	Athletics | 2
+
+Client: Emma Williams
+Events:
+	Athletics | 2
+	Handball | 35
+	Equestrian Jumping | 4
+
+Client: John Williams
+Events:No events to display
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> e
+Displaying all registered events:
+Event name: Athletics | Tickets available: 0
+Event name: Equestrian Jumping | Tickets available: 3
+Event name: Football | Tickets available: 2
+Event name: Handball | Tickets available: 31
+Event name: Tennis | Tickets available: 8
+Event name: Volleyball | Tickets available: 41
+Going back to main menu
+		##MainMenu##
+
+You're in the main menu. Choose an option: 
+'f' - to finish running the program 
+'e' - to display information about all the events. 
+'c' - to display about all the clients
+'b' - to buy tickets [only available to registered clients] 
+'r' - to return a tickets [only available to registered clients] 
+Your choice >> f
+
+Thank you for using Sports Club application!
+################ END OF APPLICATION ##############
+
+Process finished with exit code 0
+
+
+
+

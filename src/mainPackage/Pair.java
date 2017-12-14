@@ -1,5 +1,6 @@
 package mainPackage;
 
+//custom pair class to hld a pair of elements
 public class Pair <K,V>
 {
     private K key;

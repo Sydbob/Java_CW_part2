@@ -1,5 +1,5 @@
 package mainPackage;
-import static java.lang.System.*;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,18 +8,11 @@ import java.util.Scanner;
 import static java.lang.System.*;
 
 /**
- * Class containing various 'utility' methods
+ * Class containing various static 'utility' methods
  */
 public class Util {
 
-    /**
-     * Method to validate an integer
-     * @param value user input (String)
-     * @param errorText error text to display if int is not valid (String)
-     * @param minRange minimum range of the int
-     * @param maxRange maximum range of the int
-     * @return
-     */
+
     public static int ValidateInt (String value, String errorText, int minRange, int maxRange)
     {
         Scanner in = new Scanner(System.in);
@@ -29,7 +22,7 @@ public class Util {
         //main loop that will run both int and range test
         while (!valid)
         {
-            //loop that will run parse test while it keeps filing
+            //loop that will run parse test while it keeps failing
             while(!parsed)
             {
                 try
@@ -63,15 +56,10 @@ public class Util {
         return parsedValue;
     }
 
-    /**
-     * method that reads file input in specific format
-     * @param club
-     * @throws FileNotFoundException
-     */
+
     public static void ReadFromFile(Club club) throws FileNotFoundException
     {
         Scanner inFile = new Scanner(new FileReader("D:\\Java Projects\\Java_CW_part2\\input.txt"));
-        PrintWriter outFile = new PrintWriter("D:\\Java Projects\\Java_CW_part2\\output.txt");
         int numOfEvents = 0;
         int numOfClients =0;
         while(inFile.hasNextLine())
@@ -99,5 +87,18 @@ public class Util {
         }
         //close the inFile reader once done
         inFile.close();
+    }
+
+    public static void PrintLetter(Client client, String eName) throws FileNotFoundException
+    {
+        PrintWriter outFile = new PrintWriter("D:\\Java Projects\\Java_CW_part2\\output.txt");
+        outFile.println(" Dear " + client.GetName() + " " + client.GetSurname());
+        outFile.println("");
+        outFile.println("Unfortunately your request for tickets for " + eName + " event was not complete.");
+        outFile.println("The event has either sold out or isn't being organised by our club. We apologise for any inconvenience caused. ");
+        outFile.println("");
+        outFile.println("Kind regards,");
+        outFile.println("SportsEvents Club.");
+        outFile.close();
     }
 }

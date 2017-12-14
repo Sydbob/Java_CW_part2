@@ -8,9 +8,6 @@ public class Club {
     private SortedArrayList<Event> m_events;
 
     Club(){ m_clients = new SortedArrayList<Client>(); m_events = new SortedArrayList<Event>();}
-    //second constructor needs to be replaces later....
-    Club(Client c,Event e) {m_events.add(e); m_clients.add(c);}
-
 
     public SortedArrayList<Client> GetClients() {return m_clients;}
     public SortedArrayList<Event> GetEvents() {return m_events;}
@@ -19,8 +16,7 @@ public class Club {
     public void AddEvent(Event e) {m_events.AddE(e);}
     public void AddClient(Client c) {m_clients.AddE(c);}
 
-    //add client to club
-    //add event to club
+    //method tor eturn client id
     public int ClientID(String details)
     {
         Client client = new Client(details);
@@ -33,6 +29,7 @@ public class Club {
         return exists;
     }
 
+    //method to return event id
     public int EventID(String name)
     {
         int exists = -1;
